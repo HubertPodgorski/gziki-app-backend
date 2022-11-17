@@ -45,8 +45,8 @@ mongoose
     console.log("Connected to DB");
 
     // app listener
-    app.listen(process.env.REST_PORT, () => {
-      console.log(`Listening on port ${process.env.REST_PORT}`);
+    app.listen(process.env.PORT, () => {
+      console.log(`Listening on port ${process.env.PORT}`);
     });
   })
   .catch((error) => {
