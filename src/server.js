@@ -69,11 +69,12 @@ io.use((socket, next) => {
 
 io.on("connection", (socket) => {
   if (socket.handshake.query.token) {
-    const { team } = jwt.decode(socket.handshake.query.token);
+    const tokenData = jwt.decode(socket.handshake.query.token);
 
-    console.log("connected to team => ", team);
+    if (!tokenData) return;
 
-    socket.join(team);
+    socket.join(tokenData.team);
+    console.log("connected to team => ", tokenData.team);
 
     dogsSocketRoutes(io, socket);
     eventsSocketRoutes(io, socket);
