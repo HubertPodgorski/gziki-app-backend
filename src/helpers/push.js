@@ -19,7 +19,7 @@ const pushNotifications = async (userToken, data) => {
 
   const allSubscriptions = await SubscriptionModel.find({ team });
 
-  allSubscriptions.forEach(({ _doc: { team, email, ...subscription } }) => {
+  allSubscriptions.forEach(({ _doc: { team, userId, ...subscription } }) => {
     webpush.sendNotification(subscription, JSON.stringify(data));
   });
 };

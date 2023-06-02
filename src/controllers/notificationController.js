@@ -7,7 +7,7 @@ const { pushNotifications } = require("../helpers/push");
 
 // save subscription
 const saveSubscription = async (received, userToken) => {
-  const { team, email } = jwt.decode(userToken);
+  const { team, _id } = jwt.decode(userToken);
 
   const alreadyFound = await SubscriptionModel.findOne({
     endpoint: received.endpoint,
@@ -15,7 +15,11 @@ const saveSubscription = async (received, userToken) => {
 
   if (alreadyFound) return;
 
-  await SubscriptionModel.create({ ...received, team, userEmail: email });
+  await SubscriptionModel.create({
+    ...received,
+    team: team,
+    userId: _id,
+  });
 };
 
 const sendNotification = async (received, userToken) => {
