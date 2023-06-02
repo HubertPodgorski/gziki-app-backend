@@ -6,6 +6,7 @@ const eventsSocketRoutes = require("./socketRoutes/events");
 const usersSocketRoutes = require("./socketRoutes/users");
 const dogTasksSocketRoutes = require("./socketRoutes/dogTasks");
 const eventTemplatesSocketRoutes = require("./socketRoutes/eventTemplates");
+const notificationsSocketRoutes = require("./socketRoutes/notifications");
 const usersRoutes = require("./routes/users");
 
 const jwt = require("jsonwebtoken");
@@ -74,7 +75,6 @@ io.on("connection", (socket) => {
     if (!tokenData) return;
 
     socket.join(tokenData.team);
-    console.log("connected to team => ", tokenData.team);
 
     dogsSocketRoutes(io, socket);
     eventsSocketRoutes(io, socket);
@@ -82,6 +82,7 @@ io.on("connection", (socket) => {
     tasksSocketRoutes(io, socket);
     dogTasksSocketRoutes(io, socket);
     eventTemplatesSocketRoutes(io, socket);
+    notificationsSocketRoutes(io, socket);
   }
 });
 
