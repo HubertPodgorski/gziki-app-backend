@@ -19,7 +19,10 @@ const pushNotifications = async (userToken, data) => {
 
   const allSubscriptions = await SubscriptionModel.find({ team });
 
+  console.log("allSubscriptions => ", allSubscriptions);
+
   for await (const singleSubscription of allSubscriptions) {
+    console.log("sending notifications to: ", singleSubscription._doc.userId);
     const {
       _doc: { team, userId, ...subscription },
     } = singleSubscription;
