@@ -10,7 +10,7 @@ const saveSubscription = async (received, callback, userToken) => {
   const { team, _id } = jwt.decode(userToken);
 
   await SubscriptionModel.findOneAndDelete({
-    endpoint: received.endpoint,
+    userId: _id,
   });
 
   const createdSubscription = await SubscriptionModel.create({
