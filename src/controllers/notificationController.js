@@ -9,8 +9,13 @@ const { pushNotifications } = require("../helpers/push");
 const saveSubscription = async (received, callback, userToken) => {
   const { team, _id } = jwt.decode(userToken);
 
+  // TODO: create or for userId or endpoint
   await SubscriptionModel.findOneAndDelete({
     userId: _id,
+  });
+
+  await SubscriptionModel.findOneAndDelete({
+    endpoint: received.endpoint,
   });
 
   const createdSubscription = await SubscriptionModel.create({
