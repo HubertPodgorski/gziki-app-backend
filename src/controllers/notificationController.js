@@ -14,9 +14,9 @@ const saveSubscription = async (received, callback, userToken) => {
     userId: _id,
   });
 
-  await SubscriptionModel.findOneAndDelete({
-    endpoint: received.endpoint,
-  });
+  // await SubscriptionModel.findOneAndDelete({
+  //   endpoint: received.endpoint,
+  // });
 
   const createdSubscription = await SubscriptionModel.create({
     ...received,
