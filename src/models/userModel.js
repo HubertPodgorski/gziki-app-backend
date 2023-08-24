@@ -12,6 +12,9 @@ const getTeamFromTeamCode = (teamCode) => {
     case "DZIKIE_GZIKI_NABOR":
       return "DZIKIE_GZIKI_NABOR";
 
+    case "WEST_SIDE_DOGZ":
+      return "WEST_SIDE_DOGZ";
+
     case "TEST":
       return "TEST_TEAM";
   }
