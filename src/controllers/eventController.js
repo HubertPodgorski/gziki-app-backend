@@ -79,7 +79,11 @@ const updateEventById = async (received, callback, io, userToken) => {
   //   return res.status(404).json({ error: "EVENT_NOT_FOUND" });
   // }
 
-  const event = await EventModel.findOneAndUpdate({ _id }, { ...received });
+  const event = await EventModel.findOneAndUpdate(
+    { _id },
+    { ...received },
+    { new: true }
+  );
 
   // TODO: handle that
   // if (!event) {
