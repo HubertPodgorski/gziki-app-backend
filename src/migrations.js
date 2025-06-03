@@ -6,6 +6,8 @@ const DogModel = require("./models/dogModel");
 const DogTaskModel = require("./models/dogTaskModel");
 const EventModel = require("./models/eventModel");
 const EventTemplateModel = require("./models/eventTemplateModel");
+const SettingModel = require("./models/settingModel");
+
 const runMigrations = async () => {
   await mongoose.connect(process.env.MONGO_URL);
 
@@ -55,6 +57,13 @@ const runMigrations = async () => {
   // const result7 = await DogModel.updateMany({}, { $set: { note: "" } });
   //
   // console.log("result7 => ", result7);
+
+  // Create settings for team DZIKIE_GZIKI
+  // const result1 = await SettingModel.create({
+  //   team: "DZIKIE_GZIKI",
+  //   userUpdatingNotes: null,
+  // });
+  // console.log("result1 => ", result1);
 };
 
 runMigrations();
