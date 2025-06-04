@@ -7,6 +7,7 @@ const usersSocketRoutes = require("./socketRoutes/users");
 const dogTasksSocketRoutes = require("./socketRoutes/dogTasks");
 const eventTemplatesSocketRoutes = require("./socketRoutes/eventTemplates");
 const settingsSocketRoutes = require("./socketRoutes/settings");
+const crossPassesSocketRoutes = require("./socketRoutes/crossPasses");
 const usersRoutes = require("./routes/users");
 
 const jwt = require("jsonwebtoken");
@@ -83,6 +84,7 @@ io.on("connection", (socket) => {
     dogTasksSocketRoutes(io, socket);
     eventTemplatesSocketRoutes(io, socket);
     settingsSocketRoutes(io, socket);
+    crossPassesSocketRoutes(io, socket);
   }
 });
 
